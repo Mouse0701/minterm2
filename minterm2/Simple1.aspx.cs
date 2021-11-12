@@ -5,19 +5,27 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace minterm2{
-    public partial class Simple1 : System.Web.UI.Page{
-        protected void Page_Load(object sender, EventArgs e) {
-            string s_Ver = mt_GenVeriStr();
-            mt_ImgPointer(ref ig_Num, s_Ver);
-            HiddenField1.Value = mt_2MD5(s_Ver);
+namespace minterm2
+{
+    public partial class Simple1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                string s_Ver = mt_GenVeriStr();
+                mt_ImgPointer(ref ig_Num, s_Ver);
+                hd_Num.Value = mt_2MD5(s_Ver);
+            }
         }
 
         // To generate a 4 digital number
-        public string mt_GenVeriStr() {
+        public string mt_GenVeriStr()
+        {
             string s_Res = "";
             Random o_Ran = new Random();
-            for (int i_Ct = 0; i_Ct < 4; i_Ct++) {
+            for (int i_Ct = 0; i_Ct < 4; i_Ct++)
+            {
                 int i_Tmp = o_Ran.Next(0, 10);
                 s_Res = s_Res + i_Tmp.ToString();
             }
@@ -26,7 +34,8 @@ namespace minterm2{
 
         // To pointer the url to the image object; the content of
         // the image is the 4 digital number above
-        public void mt_ImgPointer(ref Image o_Ig, string s_Str) {
+        public void mt_ImgPointer(ref Image o_Ig, string s_Str)
+        {
             System.Drawing.Font o_Font = new System.Drawing.Font("Times New Roman", 12.0f);
             System.Drawing.Image o_IS = new System.Drawing.Bitmap(30, 10);
             System.Drawing.Graphics o_Drawing = System.Drawing.Graphics.FromImage(o_IS);
@@ -58,7 +67,8 @@ namespace minterm2{
         }
 
         // To convert a plain-text string into a md5 string
-        public string mt_2MD5(string s_Str) {
+        public string mt_2MD5(string s_Str)
+        {
             System.Security.Cryptography.MD5 cryptoMD5 = System.Security.Cryptography.MD5.Create();
             byte[] ba_Bytes = System.Text.Encoding.UTF8.GetBytes(s_Str);
             byte[] ba_Hash = cryptoMD5.ComputeHash(ba_Bytes);
@@ -69,9 +79,21 @@ namespace minterm2{
             return s_Md5;
         }
 
-        protected void ImageButton1_Click(object sender, ImageClickEventArgs e){
-        //    if (tb_Ps.TextMode == Password)
-        //        ImageButton1.ImageUrl = "eye-solid.svg";
+        protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+        {
+            string temp = tb_Ps.Text;
+            if (ImageButton1.ImageUrl == "eye-slash-solid.svg")
+            {
+                ImageButton1.ImageUrl = "eye-solid.svg";
+                tb_Ps.TextMode = TextBoxMode.SingleLine;
+            }
+            else if (ImageButton1.ImageUrl == "eye-solid.svg")
+            {
+                ImageButton1.ImageUrl = "eye-slash-solid.svg";
+                tb_Ps.Attributes.Add("value", temp);
+                tb_Ps.TextMode = TextBoxMode.Password;
+            }
         }
+
     }
 }

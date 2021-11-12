@@ -16,11 +16,11 @@ namespace minterm2 {
             if (IsPostBack == false) {
                 ListItem o_li;
                 for (int i = 0;i <= 2;i++) {
-                    o_li = new ListItem(sa_ZoneCode[0, i], sa_ZoneCode[0, i]);
+                    o_li = new ListItem(sa_ZoneCode[0, i]);
                     ddl_ZoneCode.Items.Add(o_li);
                 }
                 for (int i = 0; i <= 5; i++) {
-                    o_li = new ListItem(sa_City1[i], sa_City1[i]);
+                    o_li = new ListItem(sa_City1[i]);
                     ddl_City.Items.Add(o_li);
                 }
                 lb_Id.Text = mt_GenVeriStr();
@@ -32,20 +32,20 @@ namespace minterm2 {
             ListItem o_li;
             if (ddl_Type.SelectedValue == "手機") {
                 for (int i = 0;i <= 2;i++) {
-                    o_li = new ListItem(sa_ZoneCode[0, i], sa_ZoneCode[0, i]);
+                    o_li = new ListItem(sa_ZoneCode[0, i]);
                     ddl_ZoneCode.Items.Add(o_li);
                 }
                 for (int i = 0;i <= 5;i++) {
-                    o_li = new ListItem(sa_City1[i], sa_City1[i]);
+                    o_li = new ListItem(sa_City1[i]);
                     ddl_City.Items.Add(o_li);
                 }
             }else{
                 for (int i = 0;i <= 2;i++) {
-                    o_li = new ListItem(sa_ZoneCode[1,i], sa_ZoneCode[1,i]);
+                    o_li = new ListItem(sa_ZoneCode[1,i]);
                     ddl_ZoneCode.Items.Add(o_li);
                 }
                 for (int i = 0;i <= 1;i++) {
-                    o_li = new ListItem(sa_City2[0, i], sa_City2[0, i]);
+                    o_li = new ListItem(sa_City2[0, i]);
                     ddl_City.Items.Add(o_li);
                 }
             }
@@ -55,22 +55,22 @@ namespace minterm2 {
             ListItem o_li;
             if (ddl_ZoneCode.SelectedValue == "02") {
                 for (int i = 0;i <= 1;i++) {
-                    o_li = new ListItem(sa_City2[0, i], sa_City2[0, i]);
+                    o_li = new ListItem(sa_City2[0, i]);
                     ddl_City.Items.Add(o_li);
                 }
             }else if(ddl_ZoneCode.SelectedValue == "04") { 
                 for (int i = 0;i <= 1;i++) {
-                    o_li = new ListItem(sa_City2[1, i], sa_City2[1, i]);
+                    o_li = new ListItem(sa_City2[1, i]);
                     ddl_City.Items.Add(o_li);
                 }
             }else if(ddl_ZoneCode.SelectedValue == "07") { 
                 for (int i = 0;i <= 1;i++) {
-                    o_li = new ListItem(sa_City2[2, i], sa_City2[2, i]);
+                    o_li = new ListItem(sa_City2[2, i]);
                     ddl_City.Items.Add(o_li);
                 }
             }else{ 
                 for (int i = 0;i <= 5;i++) {
-                    o_li = new ListItem(sa_City1[i], sa_City1[i]);
+                    o_li = new ListItem(sa_City1[i]);
                     ddl_City.Items.Add(o_li);
                 }
             }
